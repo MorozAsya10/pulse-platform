@@ -3,7 +3,7 @@ import os
 import secrets
 from datetime import datetime
 
-from flask import Flask, request, jsonify, g, send_from_directory
+from flask import Flask, request, jsonify, g, send_from_directory, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 
 import db
@@ -470,7 +470,7 @@ def employee_feedback():
 
 @app.get("/")
 def index():
-    return send_from_directory(app.static_folder, "index.html")
+    return app.send_static_file("index.html")
 
 
 @app.get("/health")
